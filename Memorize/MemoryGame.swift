@@ -18,6 +18,9 @@ struct MemoryGame<CardContent> {
             cards.append(Card(content: content, id: pairIndex*2))
             cards.append(Card(content: content, id: pairIndex*2+1))
         }
+        
+        // Shuffle the cards
+        cards = cards.shuffle()
     }
     
     func choose(card: Card) {
@@ -25,7 +28,7 @@ struct MemoryGame<CardContent> {
     }
     
     struct Card: Identifiable {
-        var isFaceUP: Bool = false
+        var isFaceUP: Bool = true
         var isMatched: Bool = false
         var content: CardContent
         
