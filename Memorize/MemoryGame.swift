@@ -20,14 +20,7 @@ struct MemoryGame<CardContent> {
         }
         
         // Shuffle the cards
-        var shuffledCards = Array<Card>()
-        while !cards.isEmpty {
-            let currentIndex = Int.random(in: 0..<cards.count)
-            let currentCard = cards.remove(at: currentIndex)
-            shuffledCards.append(currentCard)
-        }
-        
-        cards = shuffledCards
+        cards = cards.shuffle()
     }
     
     func choose(card: Card) {
