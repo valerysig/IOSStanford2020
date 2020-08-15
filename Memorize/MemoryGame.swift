@@ -18,6 +18,16 @@ struct MemoryGame<CardContent> {
             cards.append(Card(content: content, id: pairIndex*2))
             cards.append(Card(content: content, id: pairIndex*2+1))
         }
+        
+        // Shuffle the cards
+        var shuffledCards = Array<Card>()
+        while !cards.isEmpty {
+            let currentIndex = Int.random(in: 0..<cards.count)
+            let currentCard = cards.remove(at: currentIndex)
+            shuffledCards.append(currentCard)
+        }
+        
+        cards = shuffledCards
     }
     
     func choose(card: Card) {
@@ -25,7 +35,7 @@ struct MemoryGame<CardContent> {
     }
     
     struct Card: Identifiable {
-        var isFaceUP: Bool = false
+        var isFaceUP: Bool = true
         var isMatched: Bool = false
         var content: CardContent
         
