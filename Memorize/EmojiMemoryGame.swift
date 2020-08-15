@@ -9,7 +9,7 @@
 import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
-    private var model: MemoryGame<String> = EmojiMemoryGame.createMemoryGame()
+    @Published private var model: MemoryGame<String> = EmojiMemoryGame.createMemoryGame()
     
     // MARK: - Access to the Model
     var cards: Array<MemoryGame<String>.Card> {
@@ -19,7 +19,6 @@ class EmojiMemoryGame: ObservableObject {
     // MARK: - Intents
     func choose(card: MemoryGame<String>.Card) {
         model.choose(card: card)
-        objectWillChange.send()
     }
     
     // MARK: - Static Methods
