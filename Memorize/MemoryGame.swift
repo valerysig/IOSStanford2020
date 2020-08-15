@@ -20,7 +20,7 @@ struct MemoryGame<CardContent> {
         }
         
         // Shuffle the cards
-        cards = cards.shuffle()
+        cards = cards.shuffled()
     }
     
     mutating func choose(card: Card) {
