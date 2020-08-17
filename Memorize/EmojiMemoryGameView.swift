@@ -42,7 +42,6 @@ struct CardView: View {
                 RoundedRectangle(cornerRadius: cornerRadius).fill()
             }
         }
-        .aspectRatio(2.0/3.0, contentMode: .fit)
         .font(Font.system(size: fontSize(for: size)))
     }
     
