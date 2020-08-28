@@ -18,15 +18,12 @@ class EmojiMemoryGame: ObservableObject {
         (name: "Fruits and vegetables", cardsCount: 6, cardsColor: UIColor.red, emojis:["🍏", "🍎", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🍒", "🥦", "🌶", "🥕"])
     ]
     
-    @Published private var model: MemoryGame<String>
-    @Published private(set) var themeName: String
-    @Published private(set) var themeColor: UIColor
+    @Published private var model: MemoryGame<String>!
+    @Published private(set) var themeName: String!
+    @Published private(set) var themeColor: UIColor!
 
     init() {
-        let modelAndTheme = EmojiMemoryGame.createMemoryGame()
-        self.model = modelAndTheme.0
-        self.themeName = modelAndTheme.1
-        self.themeColor = modelAndTheme.2
+        self.clear()
     }
 
     // MARK: - Access to the Model
@@ -37,6 +34,13 @@ class EmojiMemoryGame: ObservableObject {
     // MARK: - Intents
     func choose(card: MemoryGame<String>.Card) {
         model.choose(card: card)
+    }
+
+    func clear() {
+        let modelAndTheme = EmojiMemoryGame.createMemoryGame()
+        self.model = modelAndTheme.0
+        self.themeName = modelAndTheme.1
+        self.themeColor = modelAndTheme.2
     }
     
     // MARK: - Static Methods
