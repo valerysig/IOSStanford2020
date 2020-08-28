@@ -13,6 +13,17 @@ struct EmojiMemoryGameView: View {
 
     var body: some View {
         VStack {
+            HStack {
+                Text(self.viewModel.themeName)
+                        .bold()
+                        .foregroundColor(.black)
+                        .background(Color(self.viewModel.themeColor))
+                Text("1234")
+                        .bold()
+                        .foregroundColor(.black)
+                        .background(Color(self.viewModel.themeColor))
+
+            }
             CardsGridView(viewModel: viewModel)
             Button(action: {
                 self.viewModel.clear()
