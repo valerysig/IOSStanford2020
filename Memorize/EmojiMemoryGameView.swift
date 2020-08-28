@@ -18,7 +18,7 @@ struct EmojiMemoryGameView: View {
                         .bold()
                         .foregroundColor(.black)
                         .background(Color(self.viewModel.themeColor))
-                Text("1234")
+                Text(self.viewModel.score)
                         .bold()
                         .foregroundColor(.black)
                         .background(Color(self.viewModel.themeColor))
