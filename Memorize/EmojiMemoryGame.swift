@@ -22,7 +22,7 @@ class EmojiMemoryGame: ObservableObject {
     }
     
     // MARK: - Static Methods
-    static func createMemoryGame() -> MemoryGame<String> {
+    private static func createMemoryGame() -> MemoryGame<String> {
         let emojis = ["👻", "🎃", "🕷", "☠️", "👽", "😈", "👹", "🤖", "👁", "👣", "🦂", "🦑"].shuffled()
         let numberOfPairs = Int.random(in: 2...5)
         
