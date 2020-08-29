@@ -15,7 +15,7 @@ class EmojiMemoryGame: ObservableObject {
         (name: "People", cardsCount: 12, cardsColor: UIColor.brown, emojis:["👩‍🦳", "👲", "👮", "👷️", "💂️", "🕵🏻‍️", "👩‍🌾", "👩‍🍳", "👩‍🎓", "👩‍🎤", "👨‍🎤", "👩‍💻"]),
         (name: "Animals", cardsCount: 10, cardsColor: UIColor.green, emojis:["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐸", "🐵", "🐤", "🐔"]),
         (name: "Weather", cardsCount: 8, cardsColor: UIColor.yellow, emojis:["☃️", "❄️", "🌨", "🌩", "☀️", "🌈", "🌪", "💫", "✨", "🌬", "💧", "☔️"]),
-        (name: "Fruits and vegetables", cardsCount: 6, cardsColor: UIColor.red, emojis:["🍏", "🍎", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🍒", "🥦", "🌶", "🥕"])
+        (name: "Fruits and vegetables", cardsCount: 12, cardsColor: UIColor.red, emojis:["🍏", "🍎", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🍒", "🥦", "🌶", "🥕"])
     ]
     
     @Published private var model: MemoryGame<String>!
@@ -57,7 +57,7 @@ class EmojiMemoryGame: ObservableObject {
         // Theme: Theme name, Emoji sets, Number of cards to show, back color for cards
         let emojiTheme = EMOJI_THEME[Int.random(in: 0..<EMOJI_THEME.count)]
         let emojis = emojiTheme.emojis.shuffled()
-        let numberOfPairs = Int.random(in: 2...5)
+        let numberOfPairs = emojiTheme.cardsCount
 
         return (MemoryGame<String>(numberOfPairsOfCards: numberOfPairs) { emojis[$0] },
                 emojiTheme.name,
