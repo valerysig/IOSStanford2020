@@ -17,11 +17,11 @@ struct EmojiMemoryGameView: View {
                 Text(self.viewModel.themeName)
                         .bold()
                         .foregroundColor(.black)
-                        .background(Color(self.viewModel.themeColor))
+                        .background(self.viewModel.themeColorGradient)
                 Text(self.viewModel.score)
                         .bold()
                         .foregroundColor(.black)
-                        .background(Color(self.viewModel.themeColor))
+                        .background(self.viewModel.themeColorGradient)
 
             }
             CardsGridView(viewModel: viewModel)
@@ -31,7 +31,7 @@ struct EmojiMemoryGameView: View {
                 Text("New Game")
                         .bold()
                         .foregroundColor(.black)
-                        .background(Color(self.viewModel.themeColor))
+                        .background(self.viewModel.themeColorGradient)
             }
         }
     }
@@ -42,19 +42,20 @@ struct CardsGridView: View {
 
     var body: some View {
         Grid(viewModel.cards) { card in
-            CardView(card: card).onTapGesture {
+            CardView(card: card, viewModel: self.viewModel).onTapGesture {
                         self.viewModel.choose(card: card)
                     }
                     .padding(5)
+                    .foregroundColor(Color(self.viewModel.themeColor))
         }
                 .padding()
-                .foregroundColor(Color(viewModel.themeColor))
     }
 }
 
 struct CardView: View {
     var card: MemoryGame<String>.Card
-    
+    @ObservedObject var viewModel: EmojiMemoryGame
+
     var body: some View {
         GeometryReader { geometry in
             self.body(for: geometry.size)
@@ -69,7 +70,7 @@ struct CardView: View {
                 Text(card.content)
             } else {
                 if !card.isMatched {
-                    RoundedRectangle(cornerRadius: cornerRadius).fill()
+                    RoundedRectangle(cornerRadius: cornerRadius).fill(viewModel.themeColorGradient)
                 }
             }
         }

@@ -21,6 +21,7 @@ class EmojiMemoryGame: ObservableObject {
     @Published private var model: MemoryGame<String>!
     @Published private(set) var themeName: String!
     @Published private(set) var themeColor: UIColor!
+    @Published private(set) var themeColorGradient: RadialGradient!
 
     init() {
         self.clear()
@@ -45,6 +46,10 @@ class EmojiMemoryGame: ObservableObject {
         self.model = modelAndTheme.0
         self.themeName = modelAndTheme.1
         self.themeColor = modelAndTheme.2
+        self.themeColorGradient = RadialGradient(gradient: Gradient(colors: [.white, Color(self.themeColor)]),
+                center: .center,
+                startRadius: 1,
+                endRadius: 100)
     }
     
     // MARK: - Static Methods
