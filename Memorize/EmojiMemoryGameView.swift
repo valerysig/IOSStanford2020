@@ -22,7 +22,6 @@ struct EmojiMemoryGameView: View {
                         .bold()
                         .foregroundColor(.black)
                         .background(self.viewModel.themeColorGradient)
-
             }
             CardsGridView(viewModel: viewModel)
             Button(action: {
